@@ -1,15 +1,15 @@
-#-----------------------------------------------
+#--------------------------------------------------
 
 # This Code is Please Run in Jupyter Notebook.
 
-#-----------------------------------------------
+#[1]-----------------------------------------------
 
 import numpy as np
 from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 %matplotlib inline
 
-#-----------------------------------------------
+#[2]-----------------------------------------------
 
 def func_lorenz(t, y):
     p = 10.
@@ -22,7 +22,7 @@ def func_lorenz(t, y):
     
     return np.stack([dy0dt, dy1dt, dy2dt], axis=0)
 
-#-----------------------------------------------
+#[3]-----------------------------------------------
 
 X, Y, Z = np.meshgrid(np.linspace(-30, 30, 5), np.linspace(-30, 30, 5), np.linspace(0, 60, 5))
 
@@ -39,9 +39,8 @@ ax.set_ylim(-30, 30)
 ax.set_ylabel('y1')
 ax.set_zlim(0, 60)
 ax.set_zlabel('y2')
-ax.set_aspect('equal')
 
-#-----------------------------------------------
+#[4]-----------------------------------------------
 
 def runge_kutta(func, t, y, h):
     k1 = h*func(t, y)
@@ -51,7 +50,7 @@ def runge_kutta(func, t, y, h):
     
     return y + k1/6 + k2/3 + k3/3 + k4/6
 
-#-----------------------------------------------
+#[5]-----------------------------------------------
 
 y0_list = [np.array([-30., -30.,    0.]),
                   np.array([ 30., -30.,    0.]),
@@ -79,7 +78,7 @@ for y0 in y0_list:
     y = np.stack(y, axis=1)
     y_list.append(y)
 
-#-----------------------------------------------
+#[6]-----------------------------------------------
 
 fig = plt.figure(figsize=(8, 8))
 ax = Axes3D(fig)
@@ -92,9 +91,8 @@ ax.set_ylabel('y1')
 ax.set_ylim(-30, 30)
 ax.set_zlabel('y2')
 ax.set_zlim(0, 60)
-ax.set_aspect('equal')
 
-#-----------------------------------------------
+#[7]-----------------------------------------------
 
 fig = plt.figure(figsize=(8, 8))
 ax = Axes3D(fig)
@@ -110,9 +108,8 @@ ax.set_ylabel('y1')
 ax.set_ylim(-30, 30)
 ax.set_zlabel('y2')
 ax.set_zlim(0, 60)
-ax.set_aspect('equal')
 
-#-----------------------------------------------
+#[8]-----------------------------------------------
 
 from scipy.integrate import solve_ivp
 
@@ -139,7 +136,4 @@ ax.set_ylabel('y1')
 ax.set_ylim(-30, 30)
 ax.set_zlabel('y2')
 ax.set_zlim(0, 60)
-ax.set_aspect('equal')
-
-#-----------------------------------------------
 
